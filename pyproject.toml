@@ -1,0 +1,16 @@
+[project]
+name = "saleor-test-app"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi[standard]>=0.115.13",
+    "opentelemetry-distro[otlp]>=0.55b1",
+    "opentelemetry-instrumentation-fastapi>=0.55b1",
+]
+
+[dependency-groups]
+dev = [
+    "ruff>=0.12.1",
+]
