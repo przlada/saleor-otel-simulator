@@ -25,7 +25,7 @@ VARIABLES = {
     },
 }
 
-BASE_URL = "http://api:8000/graphql/"
+SALEOR_URL = os.getenv("SALEOR_URL", "http://api:8000/graphql/")
 
 
 def checkout_create():
@@ -34,7 +34,7 @@ def checkout_create():
         "variables": VARIABLES,
         "operationName": "checkoutCreate",
     }
-    response = requests.post(BASE_URL, json=data)
+    response = requests.post(SALEOR_URL, json=data)
     if response.status_code != 200:
         print("ERROR - checkout_create")
 
@@ -54,7 +54,7 @@ def category_details():
         "variables": variables,
         "operationName": "CategoryProducts",
     }
-    response = requests.post(BASE_URL, json=data)
+    response = requests.post(SALEOR_URL, json=data)
     if response.status_code != 200:
         print("ERROR - CATEGORY_DETAILS")
 
@@ -64,7 +64,7 @@ def user_details():
         "query": USER_DETAILS,
         "operationName": "UserDetails",
     }
-    response = requests.post(BASE_URL, json=data)
+    response = requests.post(SALEOR_URL, json=data)
     if response.status_code != 200:
         print("ERROR - UserDetails")
 
