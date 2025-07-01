@@ -1,5 +1,6 @@
 import random
 import time
+import os
 
 from fastapi import FastAPI, HTTPException, Request
 from opentelemetry import trace
@@ -27,7 +28,7 @@ def list_shipping_methods(request: Request):
         span.set_attribute(
             "saleor.environment.domain", request.headers.get("saleor-domain") or ""
         )
-        time.sleep(random.random() * 0.250)
-        if random.random() < 0.01:
+        time.sleep(random.random() * float(os.environ.get("MAX_SLEEP") or 0.25))
+        if random.random() < float(os.environ.get("ERROR_RATE") or 0.1):
             raise HTTPException(status_code=500, detail="Unknow error")
     return {}
