@@ -1,5 +1,5 @@
 [project]
-name = "saleor-test-app"
+name = "saleor-otel-simulator"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
